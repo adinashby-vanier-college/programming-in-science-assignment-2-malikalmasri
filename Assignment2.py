@@ -47,7 +47,12 @@ def cumulative_sum(arr):
 # Function 4: Two-Dimensional Arrays - Matrix Transpose
 # This function takes a 2D list (matrix) and returns its transpose.
 def transpose_matrix(matrix):
-    return [[]]
+    transposed = []
+    for j in range(len(matrix[0])):
+        transposed.append([i[j] for i in matrix])
+
+    return transposed
+
 # Function 5: Slicing - Extracting Every Nth Element
 # This function takes a list and a step value N and returns every Nth element.
 def slice_every_nth(lst, step):
@@ -76,5 +81,8 @@ def dot_product(list1, list2):
 
 # Function 7: Arithmetic Operations with Arrays - Matrix Multiplication
 # This function takes two 2D lists (matrices) and returns their matrix product.
+
 def matrix_multiplication(matrix1, matrix2):
-    return [[0, 0], [0, 0]]
+    matrix2_transposed = list(zip(*matrix2))
+    result = [[sum(a * b for a, b in zip(row, column)) for column in matrix2_transposed] for row in matrix1]
+    return result
